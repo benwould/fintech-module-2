@@ -53,16 +53,14 @@ def get_applicant_info():
     income = questionary.text("What's your total monthly income?").ask()
     loan_amount = questionary.text("What's your desired loan amount?").ask()
     home_value = questionary.text("What's your home value?").ask()
-    qual_loans_file = questionary.text("What file name would you like to save loans to?").ask()
 
     credit_score = int(credit_score)
     debt = float(debt)
     income = float(income)
     loan_amount = float(loan_amount)
     home_value = float(home_value)
-    qual_loans_file = str(qual_loans_file)
 
-    return credit_score, debt, income, loan_amount, home_value, qual_loans_file
+    return credit_score, debt, income, loan_amount, home_value
 
 
 def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_value):
@@ -114,7 +112,6 @@ def save_qualifying_loans(qualifying_loans):
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
     # YOUR CODE HERE!
-    print(qualifying_loans)
 
     # If there are no loans to save just notify user and exit
     if qualifying_loans is None:
@@ -122,17 +119,17 @@ def save_qualifying_loans(qualifying_loans):
         return
 
     # Check to see if user wants to save the loans to a file
-    save_loans = questionary.text("Would you like to save loans to a file? (Yes/No)").ask()
+    save_loans = questionary.confirm("Would you like to save loans to a file? (Yes/No)").ask()
 
     # If they don't want to save them then notify and exit
-    if save_loans == 'No':
+    if not save_loans:
         return print(f"OK, we won't save your loans")
 
-    if save_loans == 'Yes':
+    # If they want to save the loans then ask for a file name and save data to it
+    else:
         qual_loans_filename = questionary.text("What file name would you like to save loans to? (Ex: myfile.csv)").ask()
         csvpath = Path(f'data/qual_loans/{qual_loans_filename}')
         save_csv(csvpath,qualifying_loans)
-
 
 def run():
     """The main function for running the script."""
@@ -141,8 +138,7 @@ def run():
     bank_data = load_bank_data()
 
     # Get the applicant's information
-    # credit_score, debt, income, loan_amount, home_value, qual_loans_file = get_applicant_info()
-    credit_score, debt, income, loan_amount, home_value, qual_loans_file = 699,20000,1000000,50000,670000,'foo.csv'
+    credit_score, debt, income, loan_amount, home_value = get_applicant_info()
 
     # Find qualifying loans
     qualifying_loans = find_qualifying_loans(
@@ -151,7 +147,6 @@ def run():
 
     # Save qualifying loans
     save_qualifying_loans(qualifying_loans)
-
 
 if __name__ == "__main__":
     fire.Fire(run)
