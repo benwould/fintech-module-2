@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Loan Qualifier Application..
+"""Loan Qualifier Application.
 
 This is a command line application to match applicants with qualifying loans.
 
@@ -11,7 +11,7 @@ import fire
 import questionary
 from pathlib import Path
 
-from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import load_csv, save_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -116,6 +116,22 @@ def save_qualifying_loans(qualifying_loans):
     # YOUR CODE HERE!
     print(qualifying_loans)
 
+    # If there are no loans to save just notify user and exit
+    if qualifying_loans is None:
+        print(f"Sorry, no loans available for saving.")
+        return
+
+    # Check to see if user wants to save the loans to a file
+    save_loans = questionary.text("Would you like to save loans to a file? (Yes/No)").ask()
+
+    # If they don't want to save them then notify and exit
+    if save_loans == 'No':
+        return print(f"OK, we won't save your loans")
+
+    if save_loans == 'Yes':
+        qual_loans_filename = questionary.text("What file name would you like to save loans to? (Ex: myfile.csv)").ask()
+        csvpath = Path(f'data/qual_loans/{qual_loans_filename}')
+        save_csv(csvpath,qualifying_loans)
 
 
 def run():
