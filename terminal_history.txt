@@ -1,0 +1,50 @@
+  149  git clone https://uwa.bootcampcontent.com/UWA-Bootcamp/UW-VIRT-FIN-PT-10-2022-U-B.git
+  150  cd ../../repos/
+  151  cd fintech-module-2/
+  152  ls
+  153  python app.py 
+  154  venv activate fintech
+  155  python venv activate fintech
+  156  pwd
+  157  git status
+  158  git rm .idea/*
+  159  git status
+  160  git reset HEAD -- .
+  161  git status
+  162  git reflog
+  163  git status
+  164  pwd
+  165  ls
+  166  git status
+  167  git add README.md 
+  168  git status
+  169  ls
+  170  del Untitled.ipynb 
+  171  rm Untitled.ipynb 
+  172  git add app.py data/* qualifier/*
+  173  git status
+  174  git status
+  175  git add .gitignore 
+  176  git status
+  177  git commit
+  178  git status
+  179  git reflog
+  180  git push
+  181  git status
+  182  git status
+  183  git add app.py qualifier/utils/fileio.py data/qual_loans/
+  184  git status
+  185  git commit
+  186  git status
+  187  git add data/qual_loans/myfile.csv qualifier/utils/fileio.py 
+  188  git commit
+  189  git status
+  190  git add
+  191  git add *
+  192  git status
+  193  git commit
+  194  git status
+  195  git add README.md 
+  196  git commit
+  197  git push
+  198  history 50 > terminal_history.txt
