@@ -39,14 +39,15 @@ def save_csv(csvpath,loan_data):
         A list of lists that contains the rows of data from the CSV file.
 
     """
-    with open(csvpath, "w") as csvfile:
+    with open(csvpath, "w", newline='') as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=",")
         header = ['Lender', 'Max Loan', 'Amount', 'Max LTV', 'Max DTI', 'Min Credit Score', 'Interest Rate']
 
         # Write the CSV Header
         csvwriter.writerow(header)
 
-        # Read the CSV data
-        # for row in csvreader:
-        #     data.append(row)
-    return 'saved!'
+        # Write the data to csv file
+        for row in loan_data:
+            csvwriter.writerow(row)
+
+    print('File saved!')
