@@ -1,46 +1,59 @@
-# Project Title
+# Loan Qualification Application
 
-Just after the title, introduce your project by describing attractively 
-what the project is about and what is the main problem that inspires 
-you to create this project or what is the main contribution for the 
-potential user of your project.
+An application for checking whether or not a customer qualifies for a loan or loans.
+Given a set of lenders who are willing to offer a loan, gather necessary information
+from the customer and deduce if they qualify. The primary qualifications include:
+- Monthly Debt Ratio
+- Loan to Value Ratio
 
 ---
 
 ## Technologies
 
-Describe the technologies required to use your project such as programming 
-languages, libraries, frameworks, and operating systems. Be sure to include
- the specific versions of any critical dependencies that you have used in 
- the stable version of your project.
+This is a python application using the library `questionary` to query the user for 
+necessary information.  We also use `fire` to make this a CLI for the customer.
 
 ---
 
 ## Installation Guide
 
-In this section, you should include detailed installation notes containing
- code blocks and screenshots.
+This application will be run from source code.  Source code files will be executed from 
+the command line via Windows `cmd` window or git bash.  The main executable is `app.py`.
 
 ---
 
 ## Usage
 
-This section should include screenshots, code blocks, or animations 
-explaining how to use your project.
+The main executable is `app.py` and will be executed from command line as follows:
+`>python app.py`
+
+The user is then prompted for the following information:
+- Credit Score
+- Monthly Debt
+- Monthly Income
+- Desired Loan Amount
+- Home Value
+
+These inputs are used to calculate loan qualification ratios and are compared to a `daily_rate_sheet'`
+provided by lenders.  Contents of the rate sheet include:
+- Lender
+- Max Loan Amount
+- Max LTV
+- Max DTI
+- Min Credit Score
+- Interest Rate
+
 
 ---
 
 ## Contributors
 
-In this section, list all the people who contribute to this project. 
-You might want recruiters or potential collaborators to reach you, so
- include your contact email and, optionally, your LinkedIn or Twitter profile.
+This application was written by Ben Wood in conjunction with folks at [UW Fintech](https://uwa.bootcampcontent.com/UWA-Bootcamp/UW-VIRT-FIN-PT-10-2022-U-B).
 
 ---
 
 ## License
 
-When you share a project on a repository, especially a public one, it's 
-important to choose the right license to specify what others can and can't
- with your source code and files. Use this section to include the license 
- you want to use.
+This application is licensed under the GNU General Public License. See here for details.
+
+[GNU Public License](https://github.com/IQAndreas/markdown-licenses/blob/master/gnu-gpl-v3.0.md)
